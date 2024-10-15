@@ -1,5 +1,5 @@
 <template>
-    <div class="order-page p-4 sm:p-6 lg:p-8">
+    <div class="order-page p-4 sm:p-6 lg:p-8 -ml-10 ">
       <h1 class="text-2xl sm:text-3xl font-bold text-[#31427A] mb-1">Orders</h1>
       <p class="mb-4 text-gray-600">{{ orders.length }} Orders</p>
       

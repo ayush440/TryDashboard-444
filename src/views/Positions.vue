@@ -1,5 +1,5 @@
 <template>
-  <div class="positions-page p-6">
+  <div class="positions-page p-6 -ml-6">
     <h1 class="text-2xl font-bold text-[#31427A] mb-4">Positions</h1>
     <div class="flex justify-between items-center mb-4">
       <p class="text-lg">Today's Profit: <span :class="{'text-green-600': todayProfit > 0, 'text-red-600': todayProfit < 0}">{{ formatCurrency(todayProfit) }}</span></p>

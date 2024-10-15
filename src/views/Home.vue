@@ -1,4 +1,5 @@
 <template>
+  <Header @toggle-menu="toggleMobileMenu" />
   <div class="home">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div class="bg-white rounded-lg shadow p-6 mt-5">
@@ -44,6 +45,7 @@ import { ref } from 'vue'
 import DonutChart from '../components/DonutChart.vue'
 import StatCard from '../../src/components/Statcard.vue'
 import PositionsTable from '../components/PositionsTable.vue'
+import Header from '../components/Header.vue';
 
 const profitData = ref([
   { name: 'Strategy name', value: 25, color: '#FF6384' },

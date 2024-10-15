@@ -8,45 +8,19 @@
       <i class="icon-menu"></i>
     </button>
     <nav :class="{ 'hidden': !isMobileMenuOpen, 'md:block': true }">
-      <div class="bg-[#5847f7] transition-all duration-300 rounded-lg text-white">
-        <router-link to="/" class="nav-item active cursor-pointer">
-          <i class="icon-home"></i>
-          <span class="text-white">Home</span>
-        </router-link>
-      </div>
-      
-      <div class="hover:bg-[#5847f7] transition-all duration-300 rounded-lg hover:text-white cursor-pointer">
-        <router-link to="/strategy" class="nav-item">
-          <i class="icon-strategy"></i>
-          <span>Strategy</span>
-        </router-link>
-      </div>
-
-      <div class="hover:bg-[#5847f7] transition-all duration-300 rounded-lg hover:text-white cursor-pointer">
-        <router-link to="/broker" class="nav-item">
-          <i class="icon-broker"></i>
-          <span>Broker</span>
-        </router-link>
-      </div>
-     
-      <div class="hover:bg-[#5847f7] transition-all duration-300 rounded-lg hover:text-white cursor-pointer">
-        <router-link to="/orders" class="nav-item">
-          <i class="icon-orders"></i>
-          <span>Orders</span>
-        </router-link>
-      </div>
-     
-      <div class="hover:bg-[#5847f7] transition-all duration-300 rounded-lg hover:text-white cursor-pointer">
-        <router-link to="/positions" class="nav-item">
-          <i class="icon-positions"></i>
-          <span>Positions</span>
-        </router-link>
-      </div>
-
-      <div class="hover:bg-[#5847f7] transition-all duration-300 rounded-lg hover:text-white cursor-pointer">
-        <router-link to="/tutorials" class="nav-item">
-          <i class="icon-tutorials"></i>
-          <span>Tutorials</span>
+      <div>
+        <router-link 
+          v-for="item in menuItems" 
+          :key="item.path" 
+          :to="item.path" 
+          :class="[
+            'nav-item',
+            'transition-all duration-50 rounded-lg cursor-pointer',
+            $route.path === item.path ? 'active bg-[#5847f7] text-white' : 'hover:bg-[#5847f7] hover:text-white'
+          ]"
+        >
+          <i :class="item.icon"></i>
+          <span>{{ item.name }}</span>
         </router-link>
       </div>
     </nav>
@@ -56,9 +30,20 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRoute } from 'vue-router'
 
+const route = useRoute()
 const showUserMenu = ref(false)
 const isMobileMenuOpen = ref(false)
+
+const menuItems = [
+  { name: 'Home', path: '/', icon: 'icon-home' },
+  { name: 'Strategy', path: '/strategy', icon: 'icon-strategy' },
+  { name: 'Broker', path: '/broker', icon: 'icon-broker' },
+  { name: 'Orders', path: '/orders', icon: 'icon-orders' },
+  { name: 'Positions', path: '/positions', icon: 'icon-positions' },
+  { name: 'Tutorials', path: '/tutorials', icon: 'icon-tutorials' },
+]
 
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value
@@ -102,16 +87,14 @@ const logout = () => {
   margin-bottom: 10px;
   text-decoration: none;
   color: grey;
+  border-radius: 8px; /* Set a consistent border radius */
+  height: 40px; /* Set a fixed height */
 }
 
-.nav-item.active {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-}
-
-.nav-item:hover {
+.nav-item:hover, .nav-item.active {
   color: white;
 }
+
 
 .user-profile {
   margin-top: auto;
