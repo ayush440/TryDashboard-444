@@ -1,5 +1,9 @@
 <template>
   <div class="sidebar" :class="{ 'sidebar-mobile': isMobileMenuOpen }">
+    <div class="logo text-black font-bold mb-8">
+      <img src="../assets/images/bg.jpg" alt="" class="w-10 h-10 mr-2" />
+      Logo Here
+    </div>
     
     <!-- Navigation Links -->
     <button @click="toggleMobileMenu" class="mobile-menu-toggle md:hidden">
