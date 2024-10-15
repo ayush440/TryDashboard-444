@@ -1,9 +1,7 @@
 <template>
   <div class="sidebar" :class="{ 'sidebar-mobile': isMobileMenuOpen }">
-    <div class="logo text-black font-bold">
-      <img src=" " alt="" />
-      <span>Logo Here </span>
-    </div>
+    
+    <!-- Navigation Links -->
     <button @click="toggleMobileMenu" class="mobile-menu-toggle md:hidden">
       <i class="icon-menu"></i>
     </button>
@@ -13,7 +11,7 @@
           v-for="item in menuItems" 
           :key="item.path" 
           :to="item.path" 
-          :class="[
+          :class="[ 
             'nav-item',
             'transition-all duration-50 rounded-lg cursor-pointer',
             $route.path === item.path ? 'active bg-[#5847f7] text-white' : 'hover:bg-[#5847f7] hover:text-white'
@@ -24,7 +22,20 @@
         </router-link>
       </div>
     </nav>
-    <!-- Rest of the sidebar content -->
+    
+    <!-- Admin Profile and View Profile Section at the Bottom -->
+    <div class="bottom-wrapper mt-auto">
+      <div class="admin-profile mb-8">
+        <img src="../assets/images/profile.jpg" alt="Admin Profile" class="w-16 h-16 rounded-full mx-auto mb-2 object-cover" />
+        <h3 class="text-center text-gray-800 font-semibold">Sam Wheeler</h3>
+        <p class="text-center text-gray-600 text-sm">samwheeler@example.com</p>
+      </div>
+      
+      <router-link to="/profile" class="view-profile">
+        <i class="icon-user"></i>
+        <span>View Profile</span>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -74,12 +85,6 @@ const logout = () => {
   transition: transform 0.3s ease-in-out;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  margin-bottom: 30px;
-}
-
 .nav-item {
   display: flex;
   align-items: center;
@@ -87,34 +92,33 @@ const logout = () => {
   margin-bottom: 10px;
   text-decoration: none;
   color: grey;
-  border-radius: 8px; /* Set a consistent border radius */
-  height: 40px; /* Set a fixed height */
+  border-radius: 8px;
+  height: 40px;
 }
 
 .nav-item:hover, .nav-item.active {
   color: white;
 }
 
+.bottom-wrapper {
+  margin-top: auto; /* Makes the content go to the bottom */
+  text-align: center;
+}
 
-.user-profile {
-  margin-top: auto;
+.view-profile {
   display: flex;
+  justify-content: center;
   align-items: center;
-}
-
-.avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-.user-menu-dropdown {
-  position: absolute;
-  background-color: white;
-  border-radius: 8px;
+  margin: 0 auto;
   padding: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: grey;
+  border-radius: 8px;
+}
+
+.view-profile:hover {
+  background-color: #5847f7;
+  color: white;
 }
 
 .mobile-menu-toggle {
