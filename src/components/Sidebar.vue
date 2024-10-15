@@ -36,7 +36,7 @@
       </div>
       
       <router-link to="/profile" class="view-profile">
-        <i class="icon-user"></i>
+        <i class="icon-userroshni"></i>
         <span>View Profile</span>
       </router-link>
     </div>
