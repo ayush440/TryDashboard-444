@@ -17,7 +17,6 @@
 import { ref } from 'vue'
 const userName = ref('Sam')
 const mode = ref('Paper')
-
 const setMode = (newMode) => {
   mode.value = newMode
 }
