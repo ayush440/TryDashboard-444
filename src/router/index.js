@@ -6,6 +6,8 @@ import Order from '../views/Orders.vue'
 import Positions from '../views/Positions.vue'
 import Tutorials from '../views/Tutorials.vue'
 import Profile from '../views/Profile.vue'
+import Login from '../views/Login.vue'
+import Signup from '../views/Signup.vue'
 
 const routes = [
   {
@@ -24,9 +26,19 @@ const routes = [
     component: Broker
   },
   {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+  {
     path: '/orders',  
     name: 'Order',
     component: Order
+  },
+  {
+    path: '/signup',
+    name: 'Signup',
+    component: Signup
   },
   {
     path: '/positions',

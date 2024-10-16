@@ -1,8 +1,7 @@
 <template>
   <div class="app-container">
-    <Sidebar class="sidebar" :class="{ 'sidebar-mobile': isMobileMenuOpen }" />
-    <div class="main-content">
-      
+    <Sidebar v-if="authStore.isAuthenticated" class="sidebar" :class="{ 'sidebar-mobile': isMobileMenuOpen }" />
+    <div class="main-content" :class="{ 'ml-0': !authStore.isAuthenticated, 'ml-64': authStore.isAuthenticated }">
       <main class="content-area">
         <router-view></router-view>
       </main>
@@ -11,15 +10,20 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import Sidebar from './components/Sidebar.vue';
+import { useAuthStore } from './stores/auth';
 
-
+const authStore = useAuthStore();
 const isMobileMenuOpen = ref(false);
 
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value;
 };
+
+onMounted(() => {
+  authStore.checkAuth();
+});
 </script>
 
 <style>
