@@ -15,7 +15,6 @@
 
 <script setup>
 import { ref } from 'vue'
-
 const userName = ref('Sam')
 const mode = ref('Paper')
 
